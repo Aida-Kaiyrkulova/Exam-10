@@ -1,0 +1,18 @@
+{
+  "comments": [
+    {
+      "id": "7614c9dc-9d1d-418a-8b7e-9ec91daa5d6a",
+      "newsId": "80d6b66c-22a7-46b2-b756-2f0a15af2b3d",
+      "author": "John Doe",
+      "text": "This is a comment for the news article."
+    }
+  ],
+  "news": [
+    {
+      "content": "This is the content of the news article.",
+      "date": "2024-12-21T08:05:50.670Z",
+      "id": "80d6b66c-22a7-46b2-b756-2f0a15af2b3d",
+      "image": null,
+      "title": "New Test News"
+    }]
+}
