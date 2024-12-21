@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { TextField, Button } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import React, { useRef, useState } from "react";
+import { TextField, Button } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 
 interface Props {
   name: string;
@@ -10,13 +10,13 @@ interface Props {
 
 const FileInput: React.FC<Props> = ({ name, label, onGetFile }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [fileName, setFileName] = useState('');
+  const [fileName, setFileName] = useState("");
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFileName(e.target.files[0].name);
     } else {
-      setFileName('');
+      setFileName("");
     }
     onGetFile(e);
   };
@@ -30,7 +30,7 @@ const FileInput: React.FC<Props> = ({ name, label, onGetFile }) => {
   return (
     <>
       <input
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         type="file"
         name={name}
         onChange={onFileChange}

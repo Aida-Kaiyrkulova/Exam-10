@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store.ts';
-import { addComment, deleteComment, fetchComments } from './commentsThunk.ts';
-import {Comment} from "../../types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../app/store.ts";
+import { addComment, deleteComment, fetchComments } from "./commentsThunk.ts";
+import { Comment } from "../../types";
 
 interface CommentsState {
   items: Comment[];
@@ -20,7 +20,7 @@ export const selectLoading = (state: RootState) => state.comments.loading;
 export const selectError = (state: RootState) => state.comments.error;
 
 const commentsSlice = createSlice({
-  name: 'comments',
+  name: "comments",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -28,19 +28,24 @@ const commentsSlice = createSlice({
       .addCase(fetchComments.pending, (state) => {
         state.loading = true;
       })
-      .addCase(fetchComments.fulfilled, (state, { payload: items }) => {
+      .addCase(fetchComments.fulfilled, (state, { payload: items })  => {
         state.loading = false;
-        state.items = [...items];
+        state.items = items;
       })
       .addCase(fetchComments.rejected, (state) => {
         state.loading = false;
       })
-      .addCase(addComment.fulfilled, (state) => {
-        state.items = [...state.items];
+      .addCase(addComment.fulfilled, (state, action: PayloadAction<Comment>)  => {
+        state.items.push(action.payload);
       })
-      .addCase(deleteComment.fulfilled, (state, action: PayloadAction<string>) => {
-        state.items = state.items.filter(comment => comment.id !== action.payload);
-      });
+      .addCase(
+        deleteComment.fulfilled,
+        (state, action: PayloadAction<string>) => {
+          state.items = state.items.filter(
+            (comment) => comment.id !== action.payload,
+          );
+        },
+      );
   },
 });
 

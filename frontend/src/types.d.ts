@@ -13,3 +13,8 @@ export interface Comment {
   text: string;
 }
 
+export interface CommentMutation {
+  newsId: string;
+  author: string;
+  text: string;
+}

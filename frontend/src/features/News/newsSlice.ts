@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { News } from '../../types';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { News } from "../../types";
 
 interface NewsState {
   news: News[];
@@ -14,10 +14,10 @@ const initialState: NewsState = {
 };
 
 const newsSlice = createSlice({
-  name: 'news',
+  name: "news",
   initialState,
   reducers: {
-    setNews: (state, {payload: news}) => {
+    setNews: (state, { payload: news }) => {
       state.news = news;
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
