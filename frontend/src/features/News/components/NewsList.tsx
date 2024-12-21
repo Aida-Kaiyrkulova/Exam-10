@@ -46,10 +46,10 @@ const NewsList: React.FC = () => {
         <Card key={item.id} sx={{ marginBottom: 2, padding: 2 }}>
           <CardContent>
             <Typography variant="h6">{item.title}</Typography>
-            <Typography variant="body2" color="textSecondary">
+            <Typography variant="body2" color="textSecondary" sx={{ marginTop: 1 }}>
               {formatDateTime(item.date)}
             </Typography>
-            {item.image && <img src={item.image} alt={item.title} style={{ maxWidth: '100%' }} />}
+            {item.image && <img src={item.image} alt={item.title} style={{ maxWidth: '100%' , marginTop: 1}} />}
             <Typography variant="body1">
               {item.content}
             </Typography>

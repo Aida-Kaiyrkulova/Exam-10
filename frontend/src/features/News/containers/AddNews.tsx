@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axiosApi from '../../../axiosApi.ts';
 import { useNavigate } from 'react-router-dom';
 import { Box, Typography, TextField, Button, CircularProgress } from '@mui/material';
+import FileInput from '../../../components/FileInput/FileInput.tsx';
+import Grid from '@mui/material/Grid2';
 
 const AddNews: React.FC = () => {
   const [title, setTitle] = useState('');
@@ -30,6 +32,13 @@ const AddNews: React.FC = () => {
     }
   };
 
+  const fileEventChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
+
   return (
     <Box sx={{ maxWidth: 600, margin: '0 auto', padding: 2 }}>
       <Typography variant="h4" gutterBottom>
@@ -54,14 +63,12 @@ const AddNews: React.FC = () => {
           required
           sx={{ marginBottom: 2 }}
         />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setImage(e.target.files?.[0] || null)}
-          style={{ marginBottom: '16px' }}
-        />
+        <Grid>
+          <FileInput name="image" label="Image" onGetFile={fileEventChangeHandler} />
+        </Grid>
+
         <Box>
-          <Button type="submit" variant="contained" color="primary" disabled={loading}>
+          <Button type="submit" variant="contained" color="primary" disabled={loading}  sx={{ marginTop: 2 }}>
             {loading ? <CircularProgress size={24} /> : 'Add Post'}
           </Button>
         </Box>

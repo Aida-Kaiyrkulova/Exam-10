@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { News } from '../../types';
 
-
 interface NewsState {
   news: News[];
   loading: boolean;
@@ -18,8 +17,8 @@ const newsSlice = createSlice({
   name: 'news',
   initialState,
   reducers: {
-    setNews: (state, action: PayloadAction<any[]>) => {
-      state.news = action.payload;
+    setNews: (state, {payload: news}) => {
+      state.news = news;
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
